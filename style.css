@@ -1,16 +1,14 @@
-p {
-  display: inline-block;
-}
-
-.question {
-  display: block;
+body {
+  font-family: "Roboto", sans-serif;
 }
 
 #message {
+  font-size: 1.1rem;
+  font-weight: 300;
 }
 
 .correct {
-  background-color: rgb(42, 165, 79);
+  background-color: #2aa54f;
   color: rgb(255, 255, 255);
 }
 
@@ -21,10 +19,29 @@ p {
 
 .container {
   background-color: greenyellow;
-  margin: auto;
+  margin: 20vh auto;
   width: 20%;
   min-width: 200px;
+  display: grid;
   border: 3px solid green;
   padding: 10px;
-  text-align: center;
+  place-items: center;
+  position: relative;
+}
+
+.question {
+  font-size: 1.2rem;
+}
+
+.questionNumber {
+  position: absolute;
+  margin: 0;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-weight: 100;
+}
+
+button {
+  width: 40%;
+  margin: 0.1rem;
 }

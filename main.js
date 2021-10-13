@@ -10,6 +10,9 @@ const correctAnswer = [true, true, true, false];
 const myQuestion = document.querySelector(".question");
 myQuestion.textContent = questionList[0];
 
+const questionNumber = document.querySelector(".questionNumber");
+questionNumber.textContent = `#${questionIndex + 1}/${questionList.length}`;
+
 const oldDiv = document.querySelector("div");
 const yesButton = document.querySelector(".yes");
 const noButton = document.querySelector(".no");
@@ -66,6 +69,7 @@ function setNewQuestion() {
     disableButtons(true);
   } else {
     myQuestion.textContent = questionList[questionIndex];
+    questionNumber.textContent = `#${questionIndex + 1}/${questionList.length}`;
   }
   //   nextButton.onclick()
 }
