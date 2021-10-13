@@ -1,27 +1,35 @@
-const correctAnswer = false;
+const questionList = [
+  "Is GME gonna moon?",
+  "Is 2+2 = 4?",
+  "Are you an ape?",
+  "Is 2+2 = 3?",
+];
+let questionIndex = 0;
+const correctAnswer = [true, true, true, false];
 
 const myQuestion = document.querySelector(".question");
-myQuestion.textContent = "Mars is a moon";
+myQuestion.textContent = questionList[0];
 
+const oldDiv = document.querySelector("div");
 const yesButton = document.querySelector(".yes");
 const noButton = document.querySelector(".no");
 
 yesButton.onclick = function () {
-  if (correctAnswer === true) {
+  //   removeParagraph();
+  if (correctAnswer[questionIndex] === true) {
     showAnswerIsCorrect();
   } else {
     showAnswerIsWrong();
   }
-  removePreviousResult();
 };
 
 noButton.onclick = function () {
-  if (correctAnswer === false) {
+  //   removeParagraph();
+  if (correctAnswer[questionIndex] === false) {
     showAnswerIsCorrect();
   } else {
     showAnswerIsWrong();
   }
-  removePreviousResult();
 };
 
 function showAnswerIsCorrect() {
@@ -29,8 +37,9 @@ function showAnswerIsCorrect() {
   newParagraph.classList.add("correct");
   newParagraph.setAttribute("id", "message");
   newParagraph.textContent = "Correct";
-  document.body.appendChild(newParagraph);
-  disableButtons();
+  oldDiv.appendChild(newParagraph);
+  disableButtons(true);
+  setTimeout(() => setNewQuestion("Is GME gonna moon?"), 3000);
 }
 
 function showAnswerIsWrong() {
@@ -38,11 +47,34 @@ function showAnswerIsWrong() {
   newParagraph.classList.add("wrong");
   newParagraph.setAttribute("id", "message");
   newParagraph.textContent = "Wrong";
-  document.body.appendChild(newParagraph);
-  disableButtons();
+  oldDiv.appendChild(newParagraph);
+  disableButtons(true);
+  setTimeout(() => setNewQuestion("Is GME gonna moon?"), 3000);
 }
 
-function disableButtons() {
-  yesButton.disabled = true;
-  noButton.disabled = true;
+function disableButtons(currentState) {
+  yesButton.disabled = currentState;
+  noButton.disabled = currentState;
 }
+
+function setNewQuestion() {
+  disableButtons(false);
+  oldDiv.removeChild(document.querySelector("#message"));
+  questionIndex += 1;
+  if (questionIndex >= questionList.length) {
+    myQuestion.textContent = "Congratulations, you finished the test!";
+    disableButtons(true);
+  } else {
+    myQuestion.textContent = questionList[questionIndex];
+  }
+  //   nextButton.onclick()
+}
+
+// WIthout disabled buttons
+// function removeParagraph() {
+//   let el = document.querySelectorAll("#message");
+//   console.log(el.length);
+//   if (el.length > 0) {
+//     document.getElementById("message").remove();
+//   }
+// }

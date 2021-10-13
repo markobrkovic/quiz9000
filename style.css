@@ -1,3 +1,14 @@
+p {
+  display: inline-block;
+}
+
+.question {
+  display: block;
+}
+
+#message {
+}
+
 .correct {
   background-color: rgb(42, 165, 79);
   color: rgb(255, 255, 255);
@@ -6,4 +17,14 @@
 .wrong {
   background-color: rgb(180, 35, 35);
   color: aliceblue;
+}
+
+.container {
+  background-color: greenyellow;
+  margin: auto;
+  width: 20%;
+  min-width: 200px;
+  border: 3px solid green;
+  padding: 10px;
+  text-align: center;
 }
